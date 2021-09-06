@@ -1,18 +1,20 @@
 package com.example.projet.model;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
+
 import java.io.Serializable;
 
+@Entity
 public class Profil implements Serializable {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idProfil;
     private String nomProfil;
 
+
     @OneToMany
+
     @JoinColumn(name = "idCollaborateur")
     private Collaborateur collaborateur;
 

@@ -2,6 +2,7 @@ package com.example.projet.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.xml.crypto.Data;
 import java.io.Serializable;
@@ -10,7 +11,8 @@ import java.util.Date;
 @Entity
 public class Collaborateur implements Serializable {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idCollaborateur;
     private int matricule;
     private String nomCollaborateur;
