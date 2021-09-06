@@ -3,7 +3,10 @@ package com.example.projet.model;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+<<<<<<< HEAD
 import javax.persistence.OneToMany;
+=======
+>>>>>>> origin/master
 import java.io.Serializable;
 
 public class Profil implements Serializable {
@@ -12,7 +15,10 @@ public class Profil implements Serializable {
     private int idProfil;
     private String nomProfil;
 
+<<<<<<< HEAD
     @OneToMany
+=======
+>>>>>>> origin/master
     @JoinColumn(name = "idCollaborateur")
     private Collaborateur collaborateur;
 
