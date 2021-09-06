@@ -22,6 +22,7 @@ public class Collaborateur implements Serializable {
     private Date dateParticipationSeminaireIntegration;
     private boolean estParti;
     private boolean participationSeminaireIntegration;
+    private float salaire;
 
 
 
