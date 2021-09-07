@@ -1,10 +1,11 @@
 package com.example.projet.model;
 
+import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import java.io.Serializable;
-
+@Entity
 public class NiveauTechnologie implements Serializable {
 
     private int niveau;

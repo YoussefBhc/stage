@@ -2,7 +2,7 @@ package com.example.projet.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
-
+@Entity
 public class Role implements Serializable {
 
     @Id

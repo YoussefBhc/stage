@@ -1,10 +1,11 @@
 package com.example.projet.model;
 
+import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import java.io.Serializable;
 import java.util.Date;
-
+@Entity
 public class ArchiveSalaire implements Serializable {
 
     private Date dateDebutSalaire;

@@ -3,7 +3,7 @@ package com.example.projet.model;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
-
+@Entity
 public class ArchivePosteAPP implements Serializable {
 
     private Date dateDebutPosteAPP;

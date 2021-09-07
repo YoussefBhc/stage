@@ -1,11 +1,8 @@
 package com.example.projet.model;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.io.Serializable;
-
+@Entity
 public class PosteAPP implements Serializable {
 
     @Id

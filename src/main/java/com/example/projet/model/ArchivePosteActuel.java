@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
+@Entity
 public class ArchivePosteActuel implements Serializable {
 
     private Date dateDebutPoste;
