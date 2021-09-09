@@ -1,33 +1,34 @@
 package com.example.projet.model;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+
 @Entity
 public class ArchiveSalaire implements Serializable {
 
     private Date dateDebutSalaire;
     private Date dateFinSalaire;
+    @Id
+    @GeneratedValue
     private int idArchiveSalaire;
    private float montantSalaire;
 
-   @OneToMany
-    @JoinColumn(name = "idCollaborateur")
-    private Collaborateur collaborateur;
+
+   @OneToMany(mappedBy = "archiveSalaire")
+   private List<Collaborateur> collaborateurs;
 
     public ArchiveSalaire() {
         super();
     }
 
-    public ArchiveSalaire(Date dateDebutSalaire, Date dateFinSalaire, int idArchiveSalaire, float montantSalaire, Collaborateur collaborateur) {
+    public ArchiveSalaire(Date dateDebutSalaire, Date dateFinSalaire ,float montantSalaire) {
         super();
         this.dateDebutSalaire = dateDebutSalaire;
         this.dateFinSalaire = dateFinSalaire;
-        this.idArchiveSalaire = idArchiveSalaire;
         this.montantSalaire = montantSalaire;
-        this.collaborateur = collaborateur;
+
     }
 
     public Date getDateDebutSalaire() {
@@ -62,11 +63,5 @@ public class ArchiveSalaire implements Serializable {
         this.montantSalaire = montantSalaire;
     }
 
-    public Collaborateur getCollaborateur() {
-        return collaborateur;
-    }
 
-    public void setCollaborateur(Collaborateur collaborateur) {
-        this.collaborateur = collaborateur;
-    }
 }

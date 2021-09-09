@@ -2,6 +2,8 @@ package com.example.projet.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
+
 @Entity
 public class PosteActuel implements Serializable {
    @Id
@@ -9,16 +11,16 @@ public class PosteActuel implements Serializable {
     private int idPosteActuel;
     private String nomPosteActuel;
 
-    @ManyToMany(mappedBy = "idCollaborateur")
-    private Collaborateur collaborateur;
+    @ManyToMany(targetEntity = Collaborateur.class)
+    private List<Collaborateur> collaborateurs;
 
     public PosteActuel() {
     }
 
-    public PosteActuel(int idPosteActuel, String nomPosteActuel, Collaborateur collaborateur) {
+    public PosteActuel(int idPosteActuel, String nomPosteActuel) {
         this.idPosteActuel = idPosteActuel;
         this.nomPosteActuel = nomPosteActuel;
-        this.collaborateur = collaborateur;
+
     }
 
     public int getIdPosteActuel() {
@@ -37,11 +39,5 @@ public class PosteActuel implements Serializable {
         this.nomPosteActuel = nomPosteActuel;
     }
 
-    public Collaborateur getCollaborateur() {
-        return collaborateur;
-    }
 
-    public void setCollaborateur(Collaborateur collaborateur) {
-        this.collaborateur = collaborateur;
-    }
 }

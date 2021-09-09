@@ -11,7 +11,7 @@ public class BusinessUnit implements Serializable {
     private String nomBusinessUnit;
 
     @ManyToOne
-    @JoinColumn(name = "idCollaborateur")
+    @JoinColumn(name = "id_Collaborateur")
     private Collaborateur collaborateur;
 
     public BusinessUnit() {

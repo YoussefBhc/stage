@@ -4,6 +4,8 @@ package com.example.projet.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Ecole implements Serializable {
@@ -13,18 +15,18 @@ public class Ecole implements Serializable {
     private int idEcole;
     private String nomEcole;
 
-    @ManyToMany(mappedBy = "idCollaborateur")
-    private Collaborateur collaborateur;
+    @ManyToMany(targetEntity = Collaborateur.class)
+    private List<Collaborateur> collaborateurs= new ArrayList<>();
 
     public Ecole() {
         super();
     }
 
-    public Ecole(int idEcole, String nomEcole, Collaborateur collaborateur) {
+    public Ecole(int idEcole, String nomEcole) {
         super();
         this.idEcole = idEcole;
         this.nomEcole = nomEcole;
-        this.collaborateur = collaborateur;
+
     }
 
     public int getIdEcole() {
@@ -43,11 +45,5 @@ public class Ecole implements Serializable {
         this.nomEcole = nomEcole;
     }
 
-    public Collaborateur getCollaborateur() {
-        return collaborateur;
-    }
 
-    public void setCollaborateur(Collaborateur collaborateur) {
-        this.collaborateur = collaborateur;
-    }
 }

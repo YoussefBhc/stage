@@ -1,25 +1,26 @@
 package com.example.projet.model;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.persistence.*;
 import java.io.Serializable;
 @Entity
 public class CollabRole implements Serializable {
 
-
+@Id
     private int idCollab;
     private int idRole;
-    @ManyToMany
-    @JoinTable(name = "CollabRole", joinColumns = @JoinColumn(name = "idCollaborateur"), inverseJoinColumns =@JoinColumn(name = "idRole"))
+
+    @JoinTable(name = "CollabRole", joinColumns = @JoinColumn(name = "id_Collaborateur"), inverseJoinColumns =@JoinColumn(name = "id_Role"))
     private Collaborateur collaborateur;
     private Role role;
 
     public CollabRole() {
     }
 
-    public CollabRole(int idCollab, int idRole, Collaborateur collaborateur, Role role) {
+    public CollabRole(int idCollab, int idRole) {
         this.idCollab = idCollab;
         this.idRole = idRole;
-        this.collaborateur = collaborateur;
-        this.role = role;
+
     }
 }

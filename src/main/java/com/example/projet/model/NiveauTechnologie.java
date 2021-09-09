@@ -1,16 +1,14 @@
 package com.example.projet.model;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.io.Serializable;
 @Entity
 public class NiveauTechnologie implements Serializable {
 
+    @Id
     private int niveau;
-    @ManyToMany
-    @JoinTable(name = "NiveauTechnologie", joinColumns = @JoinColumn(name = "idCollaborateur"), inverseJoinColumns =@JoinColumn(name = "idTechnologie"))
+
+    @JoinTable(name = "NiveauTechnologie", joinColumns = @JoinColumn(name = "id_Collaborateur"), inverseJoinColumns =@JoinColumn(name = "id_Technologie"))
     private Collaborateur collaborateur;
     private Technologie technologie;
 }

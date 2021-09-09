@@ -1,8 +1,12 @@
 package com.example.projet.model;
 
+import org.w3c.dom.stylesheets.LinkStyle;
+
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Profil implements Serializable {
@@ -13,19 +17,17 @@ public class Profil implements Serializable {
     private String nomProfil;
 
 
-    @OneToMany
-
-    @JoinColumn(name = "idCollaborateur")
-    private Collaborateur collaborateur;
+    @OneToMany(mappedBy = "profil")
+    private List<Collaborateur> collaborateur = new ArrayList<>();
 
     public Profil() {
         super();
     }
 
     //les getters et setters
-    public Profil(String nomProfil, Collaborateur collaborateur) {
+    public Profil(String nomProfil) {
         this.nomProfil = nomProfil;
-        this.collaborateur = collaborateur;
+
     }
 
     public int getIdProfil() {
@@ -44,11 +46,7 @@ public class Profil implements Serializable {
         this.nomProfil = nomProfil;
     }
 
-    public Collaborateur getCollaborateur() {
-        return collaborateur;
-    }
 
-    public void setCollaborateur(Collaborateur collaborateur) {
-        this.collaborateur = collaborateur;
-    }
+
+
 }

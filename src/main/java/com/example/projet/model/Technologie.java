@@ -2,6 +2,8 @@ package com.example.projet.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
+
 @Entity
 public class Technologie implements Serializable {
 
@@ -10,8 +12,8 @@ public class Technologie implements Serializable {
     private int idTechnologie;
     private String nomTechnologie;
 
-    @ManyToMany(mappedBy = "idCollaborateur")
-    private Collaborateur collaborateur;
+    @ManyToMany(targetEntity = Collaborateur.class)
+    private List<Collaborateur> collaborateurs ;
 
     public Technologie() {
     }
@@ -19,7 +21,7 @@ public class Technologie implements Serializable {
     public Technologie(int idTechnologie, String nomTechnologie, Collaborateur collaborateur) {
         this.idTechnologie = idTechnologie;
         this.nomTechnologie = nomTechnologie;
-        this.collaborateur = collaborateur;
+
     }
 
     public int getIdTechnologie() {
@@ -38,11 +40,6 @@ public class Technologie implements Serializable {
         this.nomTechnologie = nomTechnologie;
     }
 
-    public Collaborateur getCollaborateur() {
-        return collaborateur;
-    }
 
-    public void setCollaborateur(Collaborateur collaborateur) {
-        this.collaborateur = collaborateur;
-    }
+
 }

@@ -1,14 +1,14 @@
 package com.example.projet.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.xml.crypto.Data;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
+@Table(name="Collaborateur")
 public class Collaborateur implements Serializable {
 
     @Id
@@ -26,6 +26,40 @@ public class Collaborateur implements Serializable {
     private boolean participationSeminaireIntegration;
     private float salaire;
 
+    @ManyToOne
+    @JoinColumn(name = "id_Profil")
+    private Profil profil;
+
+    @ManyToOne
+    @JoinColumn(name = "id_Site")
+    private Site site ;
+
+    @ManyToOne
+    @JoinColumn(name = "id_ArchiveSalaire")
+    private  ArchiveSalaire archiveSalaire;
+
+    @ManyToOne
+    @JoinColumn(name = "id_ManagerRH")
+    private ManagerRH managerRH ;
+
+    @OneToMany(mappedBy = "collaborateur")
+    private List<BusinessUnit> businessUnits= new ArrayList<>();
+
+    @OneToMany(mappedBy = "collaborateur")
+    private List<Role> roles= new ArrayList<>();
+
+    @ManyToMany(targetEntity = Technologie.class)
+    private List<Technologie> technologies= new ArrayList<>();
+
+    @ManyToMany(targetEntity = Ecole.class)
+    private List <Ecole> ecoles= new ArrayList<>();
+
+    @ManyToMany(targetEntity = PosteActuel.class)
+    private List<PosteActuel> posteActuels = new ArrayList<>();
+
+
+    @ManyToMany(targetEntity = PosteAPP.class)
+    private List<PosteAPP> posteAPPS = new ArrayList<>();
 
     //Constructeurs
 
@@ -33,8 +67,8 @@ public class Collaborateur implements Serializable {
         super();
     }
 
-    public Collaborateur(int matricule, String nomCollaborateur, String prenomCollaborateur, char sexe, String abreviation, Date dateDepart, Date dateEmbauche, Date dateParticipationSeminaireIntegration, boolean estParti, boolean participationSeminaireIntegration, float salaire) {
-        super();
+    public Collaborateur(int matricule, String nomCollaborateur, String prenomCollaborateur, char sexe, String abreviation, Date dateDepart, Date dateEmbauche, Date dateParticipationSeminaireIntegration, boolean estParti, boolean participationSeminaireIntegration, float salaire, Profil profil, Site site, ArchiveSalaire archiveSalaire, ManagerRH managerRH) {
+
         this.matricule = matricule;
         this.nomCollaborateur = nomCollaborateur;
         this.prenomCollaborateur = prenomCollaborateur;
@@ -46,105 +80,180 @@ public class Collaborateur implements Serializable {
         this.estParti = estParti;
         this.participationSeminaireIntegration = participationSeminaireIntegration;
         this.salaire = salaire;
+        this.profil = profil;
+        this.site = site;
+        this.archiveSalaire = archiveSalaire;
+        this.managerRH = managerRH;
     }
 
-    //les getters
+    //cstr du collaborateur sans manager pour pouvoir creer un manager
+
+
+    public Collaborateur(int matricule, String nomCollaborateur, String prenomCollaborateur, char sexe, String abreviation, Date dateDepart, Date dateEmbauche, Date dateParticipationSeminaireIntegration, boolean estParti, boolean participationSeminaireIntegration, float salaire, Profil profil, Site site, ArchiveSalaire archiveSalaire) {
+
+        this.matricule = matricule;
+        this.nomCollaborateur = nomCollaborateur;
+        this.prenomCollaborateur = prenomCollaborateur;
+        this.sexe = sexe;
+        this.abreviation = abreviation;
+        this.dateDepart = dateDepart;
+        this.dateEmbauche = dateEmbauche;
+        this.dateParticipationSeminaireIntegration = dateParticipationSeminaireIntegration;
+        this.estParti = estParti;
+        this.participationSeminaireIntegration = participationSeminaireIntegration;
+        this.salaire = salaire;
+        this.profil = profil;
+        this.site = site;
+        this.archiveSalaire = archiveSalaire;
+    }
 
     public int getIdCollaborateur() {
         return idCollaborateur;
+    }
+
+    public void setIdCollaborateur(int idCollaborateur) {
+        this.idCollaborateur = idCollaborateur;
     }
 
     public int getMatricule() {
         return matricule;
     }
 
-    public String getNomCollaborateur() {
-        return nomCollaborateur;
-    }
-
-    public String getPrenomCollaborateur() {
-        return prenomCollaborateur;
-    }
-
-    public char getSexe() {
-        return sexe;
-    }
-
-    public String getAbreviation() {
-        return abreviation;
-    }
-
-    public Date getDateDepart() {
-        return dateDepart;
-    }
-
-    public Date getDateEmbauche() {
-        return dateEmbauche;
-    }
-
-    public Date getDateParticipationSeminaireIntegration() {
-        return dateParticipationSeminaireIntegration;
-    }
-
-    public boolean isEstParti() {
-        return estParti;
-    }
-
-    public boolean isParticipationSeminaireIntegration() {
-        return participationSeminaireIntegration;
-    }
-
-    public float getSalaire() {
-        return salaire;
-    }
-
-    //les setters
-
-    public void setIdCollaborateur(int idCollaborateur) {
-        this.idCollaborateur = idCollaborateur;
-    }
-
     public void setMatricule(int matricule) {
         this.matricule = matricule;
+    }
+
+    public String getNomCollaborateur() {
+        return nomCollaborateur;
     }
 
     public void setNomCollaborateur(String nomCollaborateur) {
         this.nomCollaborateur = nomCollaborateur;
     }
 
+    public String getPrenomCollaborateur() {
+        return prenomCollaborateur;
+    }
+
     public void setPrenomCollaborateur(String prenomCollaborateur) {
         this.prenomCollaborateur = prenomCollaborateur;
+    }
+
+    public char getSexe() {
+        return sexe;
     }
 
     public void setSexe(char sexe) {
         this.sexe = sexe;
     }
 
+    public String getAbreviation() {
+        return abreviation;
+    }
+
     public void setAbreviation(String abreviation) {
         this.abreviation = abreviation;
+    }
+
+    public Date getDateDepart() {
+        return dateDepart;
     }
 
     public void setDateDepart(Date dateDepart) {
         this.dateDepart = dateDepart;
     }
 
+    public Date getDateEmbauche() {
+        return dateEmbauche;
+    }
+
     public void setDateEmbauche(Date dateEmbauche) {
         this.dateEmbauche = dateEmbauche;
+    }
+
+    public Date getDateParticipationSeminaireIntegration() {
+        return dateParticipationSeminaireIntegration;
     }
 
     public void setDateParticipationSeminaireIntegration(Date dateParticipationSeminaireIntegration) {
         this.dateParticipationSeminaireIntegration = dateParticipationSeminaireIntegration;
     }
 
+    public boolean isEstParti() {
+        return estParti;
+    }
+
     public void setEstParti(boolean estParti) {
         this.estParti = estParti;
+    }
+
+    public boolean isParticipationSeminaireIntegration() {
+        return participationSeminaireIntegration;
     }
 
     public void setParticipationSeminaireIntegration(boolean participationSeminaireIntegration) {
         this.participationSeminaireIntegration = participationSeminaireIntegration;
     }
 
+    public float getSalaire() {
+        return salaire;
+    }
+
     public void setSalaire(float salaire) {
         this.salaire = salaire;
+    }
+
+    public Profil getProfil() {
+        return profil;
+    }
+
+    public void setProfil(Profil profil) {
+        this.profil = profil;
+    }
+
+    public Site getSite() {
+        return site;
+    }
+
+    public void setSite(Site site) {
+        this.site = site;
+    }
+
+    public ArchiveSalaire getArchiveSalaire() {
+        return archiveSalaire;
+    }
+
+    public void setArchiveSalaire(ArchiveSalaire archiveSalaire) {
+        this.archiveSalaire = archiveSalaire;
+    }
+
+    public ManagerRH getManagerRH() {
+        return managerRH;
+    }
+
+    public void setManagerRH(ManagerRH managerRH) {
+        this.managerRH = managerRH;
+    }
+
+    @Override
+    public String toString() {
+        return "Collaborateur{" +
+                "idCollaborateur=" + idCollaborateur +
+                ", matricule=" + matricule +
+                ", nomCollaborateur='" + nomCollaborateur + '\'' +
+                ", prenomCollaborateur='" + prenomCollaborateur + '\'' +
+                ", sexe=" + sexe +
+                ", abreviation='" + abreviation + '\'' +
+                ", dateDepart=" + dateDepart +
+                ", dateEmbauche=" + dateEmbauche +
+                ", dateParticipationSeminaireIntegration=" + dateParticipationSeminaireIntegration +
+                ", estParti=" + estParti +
+                ", participationSeminaireIntegration=" + participationSeminaireIntegration +
+                ", salaire=" + salaire +
+                ", profil=" + profil +
+                ", site=" + site +
+                ", archiveSalaire=" + archiveSalaire +
+                ", managerRH=" + managerRH +
+                '}';
     }
 }

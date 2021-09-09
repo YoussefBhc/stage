@@ -10,7 +10,7 @@ public class Diplome implements Serializable {
     private int idDiplome;
     private int typeDiplome;
 
-    @JoinTable(name = "Diplome", joinColumns = @JoinColumn(name = "idCollaborateur"), inverseJoinColumns =@JoinColumn(name = "idEcole"))
+    @JoinTable(name = "Diplome", joinColumns = @JoinColumn(name = "id_Collaborateur"), inverseJoinColumns =@JoinColumn(name = "id_Ecole"))
     private Collaborateur collaborateur;
     private Ecole ecole;
 

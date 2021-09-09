@@ -1,7 +1,10 @@
 package com.example.projet.model;
 
+import org.w3c.dom.stylesheets.LinkStyle;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 public class Site implements Serializable {
@@ -11,18 +14,17 @@ public class Site implements Serializable {
     private int idSite;
     private String nomSite;
 
-    @OneToMany
-    @JoinColumn(name = "idCollaborateur")
-    private Collaborateur collaborateur;
+    @OneToMany(mappedBy = "site")
+    private List<Collaborateur> collaborateurs;
 
     public Site() {
         super();
     }
 
-    public Site(String nomSite, Collaborateur collaborateur) {
+    public Site(String nomSite) {
         super();
         this.nomSite = nomSite;
-        this.collaborateur = collaborateur;
+
     }
 
     public int getIdSite() {
@@ -41,11 +43,5 @@ public class Site implements Serializable {
         this.nomSite = nomSite;
     }
 
-    public Collaborateur getCollaborateur() {
-        return collaborateur;
-    }
 
-    public void setCollaborateur(Collaborateur collaborateur) {
-        this.collaborateur = collaborateur;
-    }
 }

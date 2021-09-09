@@ -13,7 +13,7 @@ public class ArchivePosteActuel implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  int idArchivePosteActuel;
 
-    @JoinTable(name = "ArchivePosteActuel", joinColumns = @JoinColumn(name = "idCollaborateur"), inverseJoinColumns =@JoinColumn(name = "idPosteActuel"))
+    @JoinTable(name = "ArchivePosteActuel", joinColumns = @JoinColumn(name = "id_Collaborateur"), inverseJoinColumns =@JoinColumn(name = "id_PosteActuel"))
     private Collaborateur collaborateur;
     private PosteActuel posteActuel;
 

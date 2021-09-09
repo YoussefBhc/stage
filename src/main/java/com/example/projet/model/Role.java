@@ -9,9 +9,9 @@ public class Role implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idRole;
     private String role;
-
-    @OneToMany
-    @JoinColumn(name = "idCollaborateur")
+//un collab possede plusieurs roles
+    @ManyToOne
+    @JoinColumn(name = "id_Collaborateur")
     private Collaborateur collaborateur;
 
     public Role() {

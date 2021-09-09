@@ -1,29 +1,45 @@
 package com.example.projet.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import java.util.Date;
+import java.util.List;
+
 @Entity
 public class ManagerRH extends Collaborateur{
 
+    @Column
     private boolean estActivé;
+    @Column
     private String login;
+    @Column
     private String password;
 
-    @OneToMany
-    @JoinColumn(name = "idCollaborateur")
-    private Collaborateur collaborateur;
+    @OneToMany(mappedBy = "managerRH")
+    private List<Collaborateur> collaborateurs;
+
 
     public ManagerRH() {
         super();
     }
 
-    public ManagerRH(int matricule, String nomCollaborateur, String prenomCollaborateur, char sexe, String abreviation, Date dateDepart, Date dateEmbauche, Date dateParticipationSeminaireIntegration, boolean estParti, boolean participationSeminaireIntegration, float salaire, boolean estActivé, String login, String password, Collaborateur collaborateur) {
-        super(matricule, nomCollaborateur, prenomCollaborateur, sexe, abreviation, dateDepart, dateEmbauche, dateParticipationSeminaireIntegration, estParti, participationSeminaireIntegration, salaire);
+
+//un manager est lui meme un collab mais qui ne possede pas d attribut manager
+    public ManagerRH(int matricule, String nomCollaborateur, String prenomCollaborateur, char sexe, String abreviation, Date dateDepart, Date dateEmbauche, Date dateParticipationSeminaireIntegration, boolean estParti, boolean participationSeminaireIntegration, float salaire, Profil profil, Site site, ArchiveSalaire archiveSalaire, boolean estActivé, String login, String password) {
+        super( matricule, nomCollaborateur, prenomCollaborateur, sexe, abreviation, dateDepart, dateEmbauche, dateParticipationSeminaireIntegration, estParti, participationSeminaireIntegration, salaire, profil, site, archiveSalaire);
         this.estActivé = estActivé;
         this.login = login;
         this.password = password;
-        this.collaborateur = collaborateur;
+    }
+
+    @Override
+    public String toString() {
+        return "ManagerRH{" +
+                "estActivé=" + estActivé +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }
