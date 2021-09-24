@@ -80,8 +80,8 @@ List<ArchivePosteActuel> archivePosteActuels;
 
 
 
-    public Collaborateur(int idCollaborateur, int matricule, String nomCollaborateur, String prenomCollaborateur, char sexe, String abreviation, Date dateDepart, Date dateEmbauche, Date dateParticipationSeminaireIntegration, boolean estParti, boolean participationSeminaireIntegration, float salaire) {
-        this.idCollaborateur = idCollaborateur;
+    public Collaborateur(int matricule, String nomCollaborateur, String prenomCollaborateur, char sexe, String abreviation, Date dateDepart, Date dateEmbauche, Date dateParticipationSeminaireIntegration, boolean estParti, boolean participationSeminaireIntegration, float salaire) {
+
         this.matricule = matricule;
         this.nomCollaborateur = nomCollaborateur;
         this.prenomCollaborateur = prenomCollaborateur;

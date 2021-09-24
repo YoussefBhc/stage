@@ -27,8 +27,10 @@ public class ManagerRH extends Collaborateur{
 
 
 //un manager est lui meme un collab mais qui ne possede pas d attribut manager
-    public ManagerRH(int matricule, String nomCollaborateur, String prenomCollaborateur, char sexe, String abreviation, Date dateDepart, Date dateEmbauche, Date dateParticipationSeminaireIntegration, boolean estParti, boolean participationSeminaireIntegration, float salaire, Profil profil, Site site, ArchiveSalaire archiveSalaire, boolean estActivé, String login, String password) {
-        super( matricule, nomCollaborateur, prenomCollaborateur, sexe, abreviation, dateDepart, dateEmbauche, dateParticipationSeminaireIntegration, estParti, participationSeminaireIntegration, salaire, profil, site, archiveSalaire);
+
+
+    public ManagerRH( int matricule, String nomCollaborateur, String prenomCollaborateur, char sexe, String abreviation, Date dateDepart, Date dateEmbauche, Date dateParticipationSeminaireIntegration, boolean estParti, boolean participationSeminaireIntegration, float salaire, boolean estActivé, String login, String password) {
+        super(matricule, nomCollaborateur, prenomCollaborateur, sexe, abreviation, dateDepart, dateEmbauche, dateParticipationSeminaireIntegration, estParti, participationSeminaireIntegration, salaire);
         this.estActivé = estActivé;
         this.login = login;
         this.password = password;

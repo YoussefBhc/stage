@@ -29,7 +29,7 @@ public class CollaborateurConfig {
 
 
         return args -> {
-           Collaborateur M1= new ManagerRH( 172,
+           Collaborateur M1= new ManagerRH(172,
                     "bennani",
                     "ali",
                     'M',
@@ -37,7 +37,7 @@ public class CollaborateurConfig {
                     df.parse("30/06/2025"),
                     df.parse("30/06/2020"),
                     df.parse("14/02/2021"),
-                    false, true, 30000,P1, S1, A1, true, "alibennani", "12345");
+                    false, true, 30000, true, "alibennani", "12345");
 
            collaborateurRepository.save(M1);
 
