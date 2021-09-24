@@ -11,7 +11,6 @@ public class Role implements Serializable {
     private String role;
 //un collab possede plusieurs roles
     @ManyToOne
-    @JoinColumn(name = "id_Collaborateur")
     private Collaborateur collaborateur;
 
     public Role() {

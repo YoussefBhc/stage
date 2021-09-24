@@ -11,8 +11,11 @@ public class PosteActuel implements Serializable {
     private int idPosteActuel;
     private String nomPosteActuel;
 
-    @ManyToMany(targetEntity = Collaborateur.class)
-    private List<Collaborateur> collaborateurs;
+    /*@ManyToMany(targetEntity = Collaborateur.class)
+    private List<Collaborateur> collaborateurs;*/
+
+    @OneToMany(mappedBy = "posteActuel")
+    List<ArchivePosteActuel> archivePosteActuels;
 
     public PosteActuel() {
     }

@@ -15,8 +15,14 @@ public class Ecole implements Serializable {
     private int idEcole;
     private String nomEcole;
 
-    @ManyToMany(targetEntity = Collaborateur.class)
-    private List<Collaborateur> collaborateurs= new ArrayList<>();
+   /*@ManyToMany(targetEntity = Collaborateur.class)
+    private List<Collaborateur> collaborateurs= new ArrayList<>();*/
+
+
+    @OneToMany(mappedBy = "ecole")
+    List<Diplome> diplomes;
+
+
 
     public Ecole() {
         super();

@@ -13,7 +13,7 @@ public class ArchiveSalaire implements Serializable {
     @Id
     @GeneratedValue
     private int idArchiveSalaire;
-   private float montantSalaire;
+    private float montantSalaire;
 
 
    @OneToMany(mappedBy = "archiveSalaire")

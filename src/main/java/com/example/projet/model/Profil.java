@@ -18,7 +18,7 @@ public class Profil implements Serializable {
 
 
     @OneToMany(mappedBy = "profil")
-    private List<Collaborateur> collaborateur = new ArrayList<>();
+    private List<Collaborateur> collaborateurs = new ArrayList<>();
 
     public Profil() {
         super();

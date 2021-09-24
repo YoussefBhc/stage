@@ -26,20 +26,18 @@ public class Collaborateur implements Serializable {
     private boolean participationSeminaireIntegration;
     private float salaire;
 
-    @ManyToOne
-    @JoinColumn(name = "id_Profil")
+
+
+   @ManyToOne
     private Profil profil;
 
     @ManyToOne
-    @JoinColumn(name = "id_Site")
     private Site site ;
 
     @ManyToOne
-    @JoinColumn(name = "id_ArchiveSalaire")
     private  ArchiveSalaire archiveSalaire;
 
     @ManyToOne
-    @JoinColumn(name = "id_ManagerRH")
     private ManagerRH managerRH ;
 
     @OneToMany(mappedBy = "collaborateur")
@@ -48,18 +46,31 @@ public class Collaborateur implements Serializable {
     @OneToMany(mappedBy = "collaborateur")
     private List<Role> roles= new ArrayList<>();
 
+
+
+
+@OneToMany(mappedBy = "collaborateur" )
+List<Diplome> diplomes;
+@OneToMany(mappedBy = "collaborateur")
+List<NiveauTechnologie> niveauTechnologies;
+@OneToMany(mappedBy = "collaborateur")
+List<ArchivePosteActuel> archivePosteActuels;
+    @OneToMany(mappedBy = "collaborateur")
+    List<ArchivePosteAPP> archivePosteAPPS;
+
+   /* @ManyToMany(targetEntity = Ecole.class)
+    private List <Ecole> ecoles= new ArrayList<>();
+
     @ManyToMany(targetEntity = Technologie.class)
     private List<Technologie> technologies= new ArrayList<>();
 
-    @ManyToMany(targetEntity = Ecole.class)
-    private List <Ecole> ecoles= new ArrayList<>();
 
     @ManyToMany(targetEntity = PosteActuel.class)
     private List<PosteActuel> posteActuels = new ArrayList<>();
 
 
     @ManyToMany(targetEntity = PosteAPP.class)
-    private List<PosteAPP> posteAPPS = new ArrayList<>();
+    private List<PosteAPP> posteAPPS = new ArrayList<>();*/
 
     //Constructeurs
 
@@ -67,8 +78,10 @@ public class Collaborateur implements Serializable {
         super();
     }
 
-    public Collaborateur(int matricule, String nomCollaborateur, String prenomCollaborateur, char sexe, String abreviation, Date dateDepart, Date dateEmbauche, Date dateParticipationSeminaireIntegration, boolean estParti, boolean participationSeminaireIntegration, float salaire, Profil profil, Site site, ArchiveSalaire archiveSalaire, ManagerRH managerRH) {
 
+
+    public Collaborateur(int idCollaborateur, int matricule, String nomCollaborateur, String prenomCollaborateur, char sexe, String abreviation, Date dateDepart, Date dateEmbauche, Date dateParticipationSeminaireIntegration, boolean estParti, boolean participationSeminaireIntegration, float salaire) {
+        this.idCollaborateur = idCollaborateur;
         this.matricule = matricule;
         this.nomCollaborateur = nomCollaborateur;
         this.prenomCollaborateur = prenomCollaborateur;
@@ -80,13 +93,8 @@ public class Collaborateur implements Serializable {
         this.estParti = estParti;
         this.participationSeminaireIntegration = participationSeminaireIntegration;
         this.salaire = salaire;
-        this.profil = profil;
-        this.site = site;
-        this.archiveSalaire = archiveSalaire;
-        this.managerRH = managerRH;
     }
-
-    //cstr du collaborateur sans manager pour pouvoir creer un manager
+//cstr du collaborateur sans manager pour pouvoir creer un manager
 
 
     public Collaborateur(int matricule, String nomCollaborateur, String prenomCollaborateur, char sexe, String abreviation, Date dateDepart, Date dateEmbauche, Date dateParticipationSeminaireIntegration, boolean estParti, boolean participationSeminaireIntegration, float salaire, Profil profil, Site site, ArchiveSalaire archiveSalaire) {
@@ -102,9 +110,7 @@ public class Collaborateur implements Serializable {
         this.estParti = estParti;
         this.participationSeminaireIntegration = participationSeminaireIntegration;
         this.salaire = salaire;
-        this.profil = profil;
-        this.site = site;
-        this.archiveSalaire = archiveSalaire;
+
     }
 
     public int getIdCollaborateur() {
@@ -203,37 +209,7 @@ public class Collaborateur implements Serializable {
         this.salaire = salaire;
     }
 
-    public Profil getProfil() {
-        return profil;
-    }
 
-    public void setProfil(Profil profil) {
-        this.profil = profil;
-    }
-
-    public Site getSite() {
-        return site;
-    }
-
-    public void setSite(Site site) {
-        this.site = site;
-    }
-
-    public ArchiveSalaire getArchiveSalaire() {
-        return archiveSalaire;
-    }
-
-    public void setArchiveSalaire(ArchiveSalaire archiveSalaire) {
-        this.archiveSalaire = archiveSalaire;
-    }
-
-    public ManagerRH getManagerRH() {
-        return managerRH;
-    }
-
-    public void setManagerRH(ManagerRH managerRH) {
-        this.managerRH = managerRH;
-    }
 
     @Override
     public String toString() {
@@ -250,10 +226,7 @@ public class Collaborateur implements Serializable {
                 ", estParti=" + estParti +
                 ", participationSeminaireIntegration=" + participationSeminaireIntegration +
                 ", salaire=" + salaire +
-                ", profil=" + profil +
-                ", site=" + site +
-                ", archiveSalaire=" + archiveSalaire +
-                ", managerRH=" + managerRH +
+
                 '}';
     }
 }

@@ -12,7 +12,16 @@ public class ArchivePosteAPP implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  int idArchivePosteAPP;
 
-    @JoinTable(name = "ArchivePosteAPP", joinColumns = @JoinColumn(name = "id_Collaborateur"), inverseJoinColumns =@JoinColumn(name = "id_PosteAPP"))
+
+    @ManyToOne
+    @JoinColumn(name="idCollaborateur")
     private Collaborateur collaborateur;
+
+
+    @ManyToOne
+    @JoinColumn(name = "idPosteAPP")
     private PosteAPP posteAPP;
+    /*@JoinTable(name = "ArchivePosteAPP", joinColumns = @JoinColumn(name = "id_Collaborateur"), inverseJoinColumns =@JoinColumn(name = "id_PosteAPP"))
+    private Collaborateur collaborateur;
+    private PosteAPP posteAPP;*/
 }

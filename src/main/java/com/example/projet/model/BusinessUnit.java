@@ -11,17 +11,16 @@ public class BusinessUnit implements Serializable {
     private String nomBusinessUnit;
 
     @ManyToOne
-    @JoinColumn(name = "id_Collaborateur")
     private Collaborateur collaborateur;
 
     public BusinessUnit() {
         super();
     }
 
-    public BusinessUnit(String nomBusinessUnit, Collaborateur collaborateur) {
+    public BusinessUnit(String nomBusinessUnit) {
         super();
         this.nomBusinessUnit = nomBusinessUnit;
-        this.collaborateur = collaborateur;
+
     }
 
     public int getIdBusinessUnit() {
@@ -40,11 +39,4 @@ public class BusinessUnit implements Serializable {
         this.nomBusinessUnit = nomBusinessUnit;
     }
 
-    public Collaborateur getCollaborateur() {
-        return collaborateur;
-    }
-
-    public void setCollaborateur(Collaborateur collaborateur) {
-        this.collaborateur = collaborateur;
-    }
-}
+   }

@@ -7,7 +7,8 @@ import java.io.Serializable;
 @Entity
 public class CollabRole implements Serializable {
 
-@Id
+
+    @Id
     private int idCollab;
     private int idRole;
 

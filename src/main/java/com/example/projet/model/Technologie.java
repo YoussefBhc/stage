@@ -12,8 +12,8 @@ public class Technologie implements Serializable {
     private int idTechnologie;
     private String nomTechnologie;
 
-    @ManyToMany(targetEntity = Collaborateur.class)
-    private List<Collaborateur> collaborateurs ;
+    @OneToMany(mappedBy = "technologie")
+    List<NiveauTechnologie> niveauTechnologies;
 
     public Technologie() {
     }

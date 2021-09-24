@@ -12,8 +12,12 @@ public class PosteAPP implements Serializable {
     private int idPosteAPP;
     private String nomPosteAPP;
 
+
+    @OneToMany(mappedBy = "posteAPP")
+    List<ArchivePosteAPP> archivePosteAPPS;
+    /*
     @ManyToMany(targetEntity = Collaborateur.class)
-    private List<Collaborateur> collaborateurs;
+    private List<Collaborateur> collaborateurs;*/
 
     public PosteAPP() {
     }
