@@ -1,9 +1,9 @@
 package com.example.projet;
 
-import com.example.projet.dao.CollaborateurRepository;
-import com.example.projet.dao.ManagerRHRepository;
-import com.example.projet.model.Collaborateur;
-import com.example.projet.model.ManagerRH;
+import com.example.projet.repositories.CollaborateurRepository;
+import com.example.projet.repositories.ManagerRHRepository;
+import com.example.projet.entities.Collaborateur;
+import com.example.projet.entities.ManagerRH;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 @SpringBootTest
 class ProjetApplicationTests {
@@ -49,5 +50,40 @@ class ProjetApplicationTests {
 
 	}
 
+	@Test
+	public void testFindCollaborateur()
+
+	{
+		Collaborateur A= collaborateurRepository.findById(7).get();
+		System.out.println(A);
+	}
+
+	@Test
+	public void testUpdateCollaborateur()
+	{
+		Collaborateur A= collaborateurRepository.findById(7).get();
+		A.setNomCollaborateur("TARIK");
+		collaborateurRepository.save(A);
+		System.out.println(A);
+	}
+
+	@Test
+	public void testDeleteCollaborateur()
+
+	{
+		collaborateurRepository.deleteById(8);
+
+	}
+
+	@Test
+	public void testFindAllCollaborateur()
+
+	{
+		List<Collaborateur> Collabs= collaborateurRepository.findAll();
+		for (Collaborateur c:Collabs)
+		{
+			System.out.println(c);
+		}
+	}
 
 }

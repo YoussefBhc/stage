@@ -1,16 +1,10 @@
 package com.example.projet;
 
-import com.example.projet.dao.CollaborateurRepository;
-import com.example.projet.dao.ManagerRHRepository;
-import com.example.projet.model.*;
+import com.example.projet.repositories.CollaborateurRepository;
+import com.example.projet.repositories.ManagerRHRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 @SpringBootApplication
 public class ProjetApplication {
