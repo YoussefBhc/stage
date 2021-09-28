@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" type="text/css"
+      href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+<head>
+    <meta charset="utf-8">
+    <title>Liste des Collaborateurs</title>
+</head>
+<body>
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header">
+            Liste des Collaborateurs
+        </div>
+        <div class="card-body">
+
+            <table class="table table-striped">
+                <tr>
+
+                    <th>Matricule</th>
+                    <th>Nom </th>
+                    <th>Prenom</th>
+                    <th>sexe</th>
+                    <th>abreviation</th>
+                    <th>dateDepart</th>
+                    <th>dateEmbauche</th>
+                    <th>dateParticipationSeminaireIntegration</th>
+                    <th>estParti</th>
+                    <th>participationSeminaireIntegration</th>
+                    <th>salaire</th>
+                    <th>Suppression</th>
+                    <th>Edition</th>
+
+                </tr>
+
+
+
+                <tr th:each="p:${collaborateurs}">
+                    <td th:text="${p.matricule }"></td>
+                    <td th:text="${p.nomCollaborateur }"></td>
+                    <td th:text="${p.prenomCollaborateur }"></td>
+                    <td th:text="${p.sexe }"></td>
+                    <td th:text="${p.abreviation }"></td>
+
+                    <td th:text= "${ #dates.format(p.dateDepart, 'dd/MM/yyyy') }"></td>
+
+                    <td th:text= "${ #dates.format(p.dateEmbauche, 'dd/MM/yyyy') }"></td>
+                    <td th:text= "${ #dates.format(p.dateParticipationSeminaireIntegration, 'dd/MM/yyyy') }"></td>
+
+                    <td th:text="${p.estParti }"> </td>
+                    <td th:text="${p.participationSeminaireIntegration}"></td>
+                    <td th:text= "${p.salaire }"></td>
+
+
+                    <td><a onclick="return confirm('Etes-vous sûr ?')"
+                           href="supprimerCollaborateur?id=${p.idCollaborateur }">Supprimer</a></td>
+                    <td><a href="modifierCollaborateur?id=${p.idCollaborateur }">Edit</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

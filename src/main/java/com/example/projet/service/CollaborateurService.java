@@ -12,5 +12,6 @@ public interface CollaborateurService {
     Collaborateur getCollaborateur(int Id);
     List<Collaborateur> getAllCollaborateurs();
 
+
 }
 
