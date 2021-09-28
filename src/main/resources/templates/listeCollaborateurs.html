@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="template">
 <link rel="stylesheet" type="text/css"
       href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
 <head>
@@ -7,27 +9,28 @@
     <title>Liste des Collaborateurs</title>
 </head>
 <body>
-<div class="container mt-5">
+<div layout:fragment="Mycontent">
+<div class="container-xl">
     <div class="card">
         <div class="card-header">
             Liste des Collaborateurs
         </div>
         <div class="card-body">
 
-            <table class="table table-striped">
+            <table class="table table-striped table-sm">
                 <tr>
 
                     <th>Matricule</th>
                     <th>Nom </th>
                     <th>Prenom</th>
-                    <th>sexe</th>
-                    <th>abreviation</th>
-                    <th>dateDepart</th>
-                    <th>dateEmbauche</th>
-                    <th>dateParticipationSeminaireIntegration</th>
-                    <th>estParti</th>
-                    <th>participationSeminaireIntegration</th>
-                    <th>salaire</th>
+<!--                    <th>sexe</th>-->
+<!--                    <th>abreviation</th>-->
+                    <th>DateDepart</th>
+                    <th>DateEmbauche</th>
+                    <th>DateParticipationSeminaire</th>
+                    <th>EstParti</th>
+                    <th>ParticipationSeminaire</th>
+                    <th>Salaire</th>
                     <th>Suppression</th>
                     <th>Edition</th>
 
@@ -35,12 +38,12 @@
 
 
 
-                <tr th:each="p:${collaborateurs}">
+                <tr th:each="p:${collaborateurs.content}">
                     <td th:text="${p.matricule }"></td>
                     <td th:text="${p.nomCollaborateur }"></td>
                     <td th:text="${p.prenomCollaborateur }"></td>
-                    <td th:text="${p.sexe }"></td>
-                    <td th:text="${p.abreviation }"></td>
+<!--                    <td th:text="${p.sexe }"></td>-->
+<!--                    <td th:text="${p.abreviation }"></td>-->
 
                     <td th:text= "${ #dates.format(p.dateDepart, 'dd/MM/yyyy') }"></td>
 
@@ -52,13 +55,26 @@
                     <td th:text= "${p.salaire }"></td>
 
 
-                    <td><a onclick="return confirm('Etes-vous sûr ?')"
-                           href="supprimerCollaborateur?id=${p.idCollaborateur }">Supprimer</a></td>
-                    <td><a href="modifierCollaborateur?id=${p.idCollaborateur }">Edit</a></td>
+
+                    <td><a class="btn btn-danger"  onclick="return confirm('Etes-vous sûr ?')" th:href="@{supprimerCollaborateur(id=${p.idCollaborateur},
+page=${currentPage},size=${size})}">Supprimer</a>
+                    </td>
+
+                    <td><a class="btn btn-warning" th:href="@{modifierCollaborateur(id=${p.idCollaborateur },
+page=${currentPage},size=${size})}">Editer</a></td>
                 </tr>
             </table>
+            <ul class="nav nav-pills">
+                <li th:each="page,status:${pages}">
+                    <a th:class="${status.index==currentPage?'btn btn-primary':'btn' }"
+                       th:href="@{ ListeCollaborateurs(page=${status.index}, size=${size} ) }"
+                       th:text="${status.index }"></a>
+                </li>
+            </ul>
+
         </div>
     </div>
+</div>
 </div>
 </body>
 </html>

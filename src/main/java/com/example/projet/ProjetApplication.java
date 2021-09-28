@@ -2,6 +2,7 @@ package com.example.projet;
 
 import com.example.projet.repositories.CollaborateurRepository;
 import com.example.projet.repositories.ManagerRHRepository;
+import com.fasterxml.jackson.databind.deser.std.StringArrayDeserializer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,7 +16,7 @@ private CollaborateurRepository collaborateurRepository;
 private ManagerRHRepository managerRHRepository;
 
 
-	public static void main(String[] args) {
+	public static void main(String [] args) {
 		SpringApplication.run(ProjetApplication.class, args);
 	}
 //voir l insertion dans le fichier config
