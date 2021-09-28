@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="template">
+<link rel="stylesheet" type="text/css"
+      href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+<head>
+    <meta charset="utf-8">
+    <title>Ajouter Collaborateur</title>
+</head>
+<body>
+<div layout:fragment="Mycontent">
+<div class="container mt-5" >
+    <div class="card-body">
+        <form action="saveCollaborateur" method="post">
+
+            <div class="form-group">
+                <label class="control-label">Matricule Collaborateur :</label>
+                <input type="number" name="matricule" class="form-control"/>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Nom Collaborateur :</label>
+                <input type="text" name="nomCollaborateur" class="form-control"/>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Prenom Collaborateur :</label>
+                <input type="text" name="prenomCollaborateur" class="form-control"/>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Sexe Collaborateur :</label>
+                <input type="text" name="sexe" class="form-control"/>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Abreviation :</label>
+                <input type="text" name="abreviation" class="form-control"/>
+            </div>
+
+
+            <div class="form-group">
+                <label class="control-label">Date Depart:</label>
+                <input type="date" name="dateDepart" class="form-control"/>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Date Embauche:</label>
+                <input type="date" name="dateEmbauche" class="form-control"/>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Date Participation Seminaire:</label>
+                <input type="date" name="dateParticipationSeminaireIntegration" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label class="control-label"> Est Parti:</label>
+                <input type="boolean" name="estParti" class="form-control"/>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label"> A participer au seminaire integration:</label>
+                <input type="boolean" name="participationSeminaireIntegration" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label class="control-label"> Salaire :</label>
+                <input type="number" name="salaire" class="form-control" />
+            </div>
+
+
+
+
+            <div>
+                <button type="submit" class="btn btn-primary">Ajouter</button>
+            </div>
+        </form>
+    </div>
+    <tr th:text="${msg}"></tr>
+
+    <br/>
+    <br/>
+    <a href="ListeCollaborateurs">Liste Collaborateurs</a>
+</div>
+</div>
+</body>
+</html>

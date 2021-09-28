@@ -4,9 +4,11 @@ import com.example.projet.repositories.CollaborateurRepository;
 import com.example.projet.repositories.ManagerRHRepository;
 import com.example.projet.entities.Collaborateur;
 import com.example.projet.entities.ManagerRH;
+import com.example.projet.service.CollaborateurService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -20,6 +22,8 @@ class ProjetApplicationTests {
 	private CollaborateurRepository collaborateurRepository;
 	@Autowired
 	private ManagerRHRepository managerRHRepository;
+	@Autowired
+	private CollaborateurService collaborateurService;
 
 	@Test
 	public void testCreateCollaborateur() throws ParseException {
@@ -46,7 +50,7 @@ class ProjetApplicationTests {
 				false, true, 30000, true, "youssef", "12345");
 
 		collaborateurRepository.save(C);
-		managerRHRepository.save(M1);
+		//managerRHRepository.save(M1);
 
 	}
 
@@ -84,6 +88,23 @@ class ProjetApplicationTests {
 		{
 			System.out.println(c);
 		}
+	}
+
+	@Test
+	public void testFindByNomCollaborateurContains()
+	{
+		Page<Collaborateur> collabs = collaborateurService.getAllCollaborateursParPage(0,3);
+		System.out.println(collabs.getSize());
+		System.out.println(collabs.getTotalElements());
+
+		System.out.println(collabs.getTotalPages());
+		collabs.getContent().forEach(p -> {System.out.println(p.toString());
+		});
+/*ou bien
+for (Collaborateur p : collabs)
+{
+System.out.println(p);
+} */
 	}
 
 }

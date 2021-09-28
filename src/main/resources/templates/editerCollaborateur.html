@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="template">>
+<link rel="stylesheet" type="text/css"
+      href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+<head>
+    <meta charset="utf-8">
+    <title>Modifier un Collaborateur</title>
+</head>
+<body>
+<div layout:fragment="Mycontent">
+<div class="container mt-5">
+    <div class="card-body">
+        <form action="updateCollaborateur" method="post">
+
+
+            <div class="form-group">
+                <label class="control-label">ID Collaborateur :</label>
+                <input th:type="number" th:name="idCollaborateur" th:value="${collaborateur.idCollaborateur}"
+                       class="form-control"/>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Matricule :</label>
+                <input th:type="text" th:name="matricule" th:value="${collaborateur.matricule}"
+                       class="form-control"/>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Nom :</label>
+                <input th:type="text" th:name="nomCollaborateur" th:value="${collaborateur.nomCollaborateur}"
+                       class="form-control"/>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Prenom :</label>
+                <input th:type="text" th:name="prenomCollaborateur" th:value="${collaborateur.prenomCollaborateur}"
+                       class="form-control"/>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Sexe:</label>
+                <input th:type="text" th:name="sexe" th:value="${collaborateur.sexe}"
+                       class="form-control"/>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Abreviation :</label>
+                <input th:type="text" th:name="abreviation" th:value="${collaborateur.abreviation}"
+                       class="form-control"/>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label"> Date Depart :</label>
+                <input th:type="date" th:name="dateDepart" th:value= "${ #dates.format(collaborateur.dateDepart, 'dd/MM/yyyy') }" class="formcontrol"/>
+
+            </div>
+
+
+            <div class="form-group">
+                <label class="control-label"> Date Embauche:</label>
+                <input th:type="date" th:name="dateEmbauche" th:value= "${ #dates.format(collaborateur.dateEmbauche, 'dd/MM/yyyy') }" class="formcontrol"/>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label"> Date Participation Seminaire Integration :</label>
+
+                <input th:type="date" th:name="dateParticipationSeminaireIntegration" th:value="${ #dates.format(collaborateur.dateParticipationSeminaireIntegration, 'dd/MM/yyyy') }" class="formcontrol"/>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Est Parti:</label>
+                <input th:type="boolean" th:name="estParti" th:value="${collaborateur.estParti}"
+                       class="form-control"/>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">A participer au seminaire :</label>
+                <input th:type="boolean" th:name="participationSeminaireIntegration" th:value="${collaborateur.participationSeminaireIntegration}"
+                       class="form-control"/>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Salaire:</label>
+                <input th:type="number" th:name="salaire" th:value="${collaborateur.salaire}"
+                       class="form-control"/>
+            </div>
+
+
+
+
+            <div>
+                <button type="submit" class="btn btn-primary">Modifier</button>
+            </div>
+        </form>
+    </div>
+    <br/>
+    <br/>
+    <a href="ListeCollaborateurs">Liste Collaborateurs</a>
+</div>
+</div>
+</body>
+</html>
