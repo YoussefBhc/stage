@@ -66,23 +66,23 @@ class="form-control"/>
  <div class="form-group">
  <label class="control-label"> Date Depart :</label>
   <fmt:formatDate pattern="dd/MM/yyyy" value="${collaborateur.dateDepart}"
- var="formatDateD" />
-  <input type="date" name="dateDepart" value="${formatDateD}" class="formcontrol"/>
+ var="formatDate" />
+  <input type="date" name="dateDepart" value="${formatDate}" class="formcontrol"/>
  </div>
 
 
   <div class="form-group">
   <label class="control-label"> Date Embauche:</label>
   <fmt:formatDate pattern="dd/MM/yyyy" value="${collaborateur.dateEmbauche}"
-   var="formatDateE" />
-    <input type="date" name="dateEmbauche" value="${formatDateE}" class="formcontrol"/>
+   var="formatDate" />
+    <input type="date" name="dateEmbauche" value="${formatDate}" class="formcontrol"/>
   </div>
 
    <div class="form-group">
    <label class="control-label"> Date Participation Seminaire Integration :</label>
   <fmt:formatDate pattern="dd/MM/yyyy" value="${collaborateur.dateParticipationSeminaireIntegration}"
-    var="formatDateS" />
-     <input type="date" name="dateParticipationSeminaireIntegration" value="${formatDateS}" class="formcontrol"/>
+    var="formatDate" />
+     <input type="date" name="dateParticipationSeminaireIntegration" value="${formatDate}" class="formcontrol"/>
    </div>
 
     <div class="form-group">

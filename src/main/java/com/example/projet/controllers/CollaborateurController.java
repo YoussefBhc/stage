@@ -92,7 +92,7 @@ public class CollaborateurController {
                                       ModelMap modelMap) throws ParseException
     {
 //conversion de la date
-        SimpleDateFormat dateformat = new SimpleDateFormat("dd/MM/yyyy");
+       DateFormat dateformat = new SimpleDateFormat("dd/MM/yyyy");
         Date date_Depart = dateformat.parse(String.valueOf(dateDepart));
         collaborateur.setDateDepart(date_Depart);
 
