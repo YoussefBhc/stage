@@ -44,6 +44,8 @@ public class CollaborateurController {
 //conversion de la date
         DateFormat dateformat = new SimpleDateFormat("dd/MM/yyyy");
 
+
+
         Date date_Depart = dateformat.parse(String.valueOf(dateDepart));
         collaborateur.setDateDepart(date_Depart);
 
